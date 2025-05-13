@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MaterialesService } from '../../services/materiales/materiales.service';
 import { CommonModule } from '@angular/common';
-
+import Swal from 'sweetalert2'; // <-- Importar SweetAlert2
 
 @Component({
     selector: 'app-materiales',
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
     templateUrl: './materiales.component.html',
     styleUrls: ['./materiales.component.scss']
 })
-export class MaterialesComponent {
+export class MaterialesComponent implements OnInit {
     materialForm: FormGroup;
     materiales: any[] = [];
     editando = false;
@@ -43,11 +43,17 @@ export class MaterialesComponent {
             this.materialesService.actualizarMaterial(this.materialEditandoId, material).subscribe(() => {
                 this.resetForm();
                 this.obtenerMateriales();
+                Swal.fire('Actualizado', 'El material fue actualizado correctamente', 'success');
+            }, () => {
+                Swal.fire('Error', 'No se pudo actualizar el material', 'error');
             });
         } else {
             this.materialesService.crearMaterial(material).subscribe(() => {
                 this.resetForm();
                 this.obtenerMateriales();
+                Swal.fire('Éxito', 'Material agregado correctamente', 'success');
+            }, () => {
+                Swal.fire('Error', 'No se pudo agregar el material', 'error');
             });
         }
     }
@@ -59,11 +65,23 @@ export class MaterialesComponent {
     }
 
     eliminarMaterial(id: number): void {
-        if (confirm('¿Estás seguro de que deseas eliminar este material?')) {
-            this.materialesService.eliminarMaterial(id).subscribe(() => {
-                this.obtenerMateriales();
-            });
-        }
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: 'No podrás deshacer esta acción',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.materialesService.eliminarMaterial(id).subscribe(() => {
+                    this.obtenerMateriales();
+                    Swal.fire('Eliminado', 'El material ha sido eliminado', 'info');
+                }, () => {
+                    Swal.fire('Error', 'No se pudo eliminar el material', 'error');
+                });
+            }
+        });
     }
 
     resetForm(): void {
