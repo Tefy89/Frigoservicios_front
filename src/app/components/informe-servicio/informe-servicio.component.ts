@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import Swal from 'sweetalert2';
 import { InformeServicioService } from '../../services/informe-servicio/informe-servicio.service';
 import { CommonModule } from '@angular/common';
+import { jsPDF } from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 
 // Define el tipo para un informe
@@ -108,7 +110,7 @@ export class InformeServicioComponent implements OnInit {
       Swal.fire('Error', 'ID del informe no válido', 'error');
       return;
     }
-  
+
     Swal.fire({
       title: '¿Estás seguro?',
       text: 'No podrás deshacer esta acción',
@@ -142,5 +144,65 @@ export class InformeServicioComponent implements OnInit {
         Swal.fire('Error', 'No se pudieron cargar los informes', 'error');
       }
     );
+  }
+
+
+  exportarAInformePDF(informe: any): void {
+    const doc = new jsPDF();
+
+    // Logo (opcional, si tienes)
+    doc.addImage('assets/images/logo.jpg', 'JPEG', 14, 10, 40, 20);
+
+    // Título
+    doc.setFontSize(18);
+    doc.setTextColor(0, 123, 255);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Informe de Servicio', 14, 40);
+
+    // Datos como tabla
+    const tableRows = [
+      ['Usuario ID', informe.usuario?.usuario_id],
+      ['Fecha', informe.fecha],
+      ['Hora de Ingreso', informe.hora_ingreso],
+      ['Hora de Salida', informe.hora_salida],
+      ['Equipo', informe.equipo?.modelo],
+      ['Descripción', informe.descripcion_trabajo],
+      ['Material Asignado', informe.asignacionMaterial?.cantidad_usada],
+    ];
+
+    // Usamos autoTable directamente
+    autoTable(doc, {
+      head: [['Campo', 'Detalle']],
+      body: tableRows,
+      startY: 50,
+      theme: 'grid',
+      headStyles: {
+        fillColor: [0, 123, 255],
+        textColor: 255,
+        fontStyle: 'bold',
+      },
+      bodyStyles: {
+        fillColor: [255, 239, 179],
+        textColor: 0,
+      },
+      alternateRowStyles: {
+        fillColor: [240, 240, 240],
+      },
+    });
+
+    // Mensaje de agradecimiento al final
+    const finalY = (doc as any).lastAutoTable.finalY || 120;
+    doc.setTextColor(0, 123, 255);
+    doc.setFontSize(12);
+    doc.text('Gracias por usar nuestros servicios.', 14, finalY + 10);
+
+    // Fecha de generación
+    const fecha = new Date().toLocaleString();
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(10);
+    doc.text(`Fecha de generación: ${fecha}`, 14, finalY + 20);
+
+    // Guardar PDF
+    doc.save(`informe_servicio_${informe.informe_servicio_id}.pdf`);
   }
 }

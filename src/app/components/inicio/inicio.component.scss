@@ -430,28 +430,60 @@ h3 {
 
 /*footer*/
 .footer {
-  background-color: #1C2531;
+  background-color: #1c2531;
   color: #fff;
-  padding: 30px 15px 0 200px;
+  padding: 2rem;
   text-align: center;
-  font-size: 14px;
-  margin-top: 40px;
-  border-top: 5px solid #0da4d3;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: -2em;
 }
 
 .footer-content {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
-  line-height: 1.8;
 }
 
 .footer-content p {
-  margin: -3px 0;
+  margin-left: 7em;
 }
 
 
 
+.social-media-section {
+  text-align: center;
+  margin-top: 2rem;
+  margin-left: 9em;
+  background-color: #f4f4f4;
+  padding: 2rem;
+  border-radius: 8px;
+}
 
+.social-media-section h3 {
+  color: #1c2531;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-icons a {
+  font-size: 1.2rem;
+  color: #1c2531;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #73abe6;
+}
+
+.social-icons a i {
+  margin-right: 8px;
+}
 
 
 @media (max-width: 1024px) {

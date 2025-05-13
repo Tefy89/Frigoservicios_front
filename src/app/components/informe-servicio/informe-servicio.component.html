@@ -109,6 +109,7 @@
           <td>{{ informe.asignacionMaterial?.cantidad_usada}}</td>
           <td>
             <button class="delete-button" (click)="eliminarInforme(informe.informe_servicio_id, i)">Eliminar</button>
+            <button class="export-pdf-button" (click)="exportarAInformePDF(informe)">Exportar a PDF</button>
           </td>
         </tr>
       </tbody>

@@ -164,3 +164,25 @@
     margin-top: 2rem;
   }
 }
+
+.export-pdf-button {
+  background-color: #4CAF50;
+  /* Color de fondo */
+  color: white;
+  /* Color del texto */
+  padding: 10px 15px;
+  /* Espaciado */
+  border: none;
+  /* Sin borde */
+  border-radius: 5px;
+  /* Bordes redondeados */
+  cursor: pointer;
+  /* Cursor en forma de mano */
+  margin-left: 10px;
+  /* Espacio entre el botón de eliminar y exportar */
+}
+
+.export-pdf-button:hover {
+  background-color: #45a049;
+  /* Cambiar color al pasar el mouse */
+}
