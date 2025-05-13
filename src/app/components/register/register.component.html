@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="header">Registrarse</div>
+    <div class="content">
+      <h3>Comienza aquí</h3>
+      <div class="logo-container">
+        <img src="/assets/images/logo.jpg" alt="Logo">
+      </div>
+  
+      <form id="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <i>👤</i>
+          <input type="number" id="usuario_id" placeholder="Cédula" required minlength="2" [(ngModel)]="user.usuario_id" name="usuario_id">
+        </div>
+        <div class="form-group">
+          <i>👤</i>
+          <input type="text" id="nombre" placeholder="Nombre" required minlength="2" [(ngModel)]="user.nombre" name="nombre">
+        </div>
+        <div class="form-group">
+          <i>📧</i>
+          <input type="email" id="correo" placeholder="Correo electrónico" required [(ngModel)]="user.correo" name="correo">
+        </div>
+        <div class="form-group">
+          <i>🔒</i>
+          <input type="password" id="password" placeholder="Contraseña" required minlength="6" [(ngModel)]="user.password" name="password">
+        </div>
+        <div class="form-group">
+          <i>🏠</i>
+          <input type="text" id="direccion" placeholder="Dirección" required [(ngModel)]="user.direccion" name="direccion">
+        </div>
+        <div class="form-group">
+          <i>📞</i>
+          <input type="tel" id="telefono" placeholder="Teléfono" required pattern="[0-9]{10}" [(ngModel)]="user.telefono" name="telefono">
+        </div>
+        <button class="btn" type="submit">Registrarse</button>
+        <a href="#" class="link">¿Ya tienes cuenta? Inicia sesión aquí</a>
+      </form>
+      
+    </div>
+  </div>
+  

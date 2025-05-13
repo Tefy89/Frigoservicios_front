@@ -1,0 +1,173 @@
+<!-- Contenedor Principal -->
+<div class="inicio-container">
+  <br>
+
+  <!-- Carrusel -->
+  <div class="carrusel">
+    <p-carousel [value]="products" [numVisible]="1" [numScroll]="1" [responsiveOptions]="responsiveOptions"
+      [circular]="true">
+      <ng-template let-product pTemplate="item">
+        <div class="product-item p-0 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div class="image-container overflow-hidden rounded-lg">
+            <img [src]="product.image" [alt]="product.name"
+              class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-300" />
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+  <br>
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Gestión de Reportes de Tickets</h1>
+    <p class="subtitulo">Optimiza la gestión de problemas con soluciones eficientes</p>
+  </div>
+
+  <!-- Servicios -->
+  <div class="matrices">
+    <div class="p-grid p-justify-center p-align-center section-icons">
+      <div class="p-col-12 p-md-3 p-lg-2 p-text-center service-box">
+        <i class="pi pi-star icon"></i>
+        <h3>Venta de Equipos</h3>
+        <p class="parrafo">Ofrecemos equipos de aire acondicionado y refrigeración de alta calidad.</p>
+      </div>
+
+      <div class="p-col-12 p-md-3 p-lg-2 p-text-center service-box">
+        <i class="pi pi-cog icon"></i>
+        <h3>Servicio Técnico</h3>
+        <p class="parrafo">Mantenimiento, reparación e instalación profesional.</p>
+      </div>
+
+      <div class="p-col-12 p-md-3 p-lg-2 p-text-center service-box">
+        <i class="pi pi-refresh icon"></i>
+        <h3>Soporte Continuo</h3>
+        <p class="parrafo">Seguimiento postventa y soluciones a medida.</p>
+      </div>
+
+      <div class="p-col-12 p-md-3 p-lg-2 p-text-center service-box">
+        <i class="pi pi-thumbs-up icon"></i>
+        <h3>Calidad Garantizada</h3>
+        <p class="parrafo">Respaldo técnico y productos certificados.</p>
+      </div>
+
+      <div class="p-col-12 p-md-3 p-lg-2 p-text-center service-box">
+        <i class="pi pi-globe icon"></i>
+        <h3>Compromiso Ambiental</h3>
+        <p class="parrafo">Soluciones eficientes y respetuosas con el medio ambiente.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Presentación de la Empresa -->
+  <div class="container">
+    <div class="image-section">
+      <img src="assets/images/logo.jpg" alt="Logo del Sistema" class="image" />
+    </div>
+    <div class="text-section">
+      <h1>FIRGOSERVICIOS</h1>
+      <h2>Soluciones en Climatización y Refrigeración</h2>
+      <p>Somos una empresa ecuatoriana especializada en la venta, instalación, mantenimiento y reparación de equipos de
+        aire acondicionado y refrigeración. Nos enfocamos en ofrecer atención personalizada, eficiencia y
+        responsabilidad con el medio ambiente.</p>
+      <h3>Nuestra Misión</h3>
+      <p>Brindar soluciones de climatización eficientes y personalizadas, mejorando la calidad de vida de nuestros
+        clientes y contribuyendo al cuidado del medio ambiente.</p>
+      <h3>Nuestra Visión</h3>
+      <p>Ser la empresa líder en el mercado ecuatoriano, reconocida por nuestra excelencia en el servicio, la calidad de
+        nuestros productos y la innovación tecnológica.</p>
+    </div>
+  </div>
+
+  <!-- Tarjetas y botones -->
+  <div class="content">
+    <div class="action-buttons">
+      <button class="btn-primary" (click)="navigateToReports()">Ver Reportes</button>
+      <button class="btn-secondary" (click)="navigateToEquipos()">Ver Equipos</button>
+    </div>
+
+    <h1>nuestros repuestos <span class="nuevos">¡DISPONIBLES!</span></h1>
+
+    <div class="productos">
+      <!-- Producto Cards: NO MODIFICADAS -->
+      <!-- ... Tus cards existentes aquí sin cambios ... -->
+
+      <div class="producto-card">
+        <div class="etiqueta-nuevo">NUEVO</div>
+        <img src="assets/images/condi.png" alt="Air Fryer" class="producto-imagen" />
+        <div class="producto-info">
+          <p class="producto-titulo">DECAKILA | AIR FRYER 4.5 L | 1400 WATTS</p>
+          <p class="producto-codigo">Código: KUEC038B</p>
+          <span class="disponible">Disponible</span>
+          <p class="producto-precio">$85.00</p>
+        </div>
+      </div>
+
+
+      <div class="producto-card">
+        <div class="etiqueta-nuevo">NUEVO</div>
+        <img src="assets/images/samsun3.jpg" alt="Samsung Torre de Sonido" class="producto-imagen" />
+        <div class="producto-info">
+          <p class="producto-titulo">SAMSUNG | TORRE DE SONIDO | 500 WATTS</p>
+          <p class="producto-codigo">Código: MX-T50</p>
+          <span class="disponible">Disponible</span>
+          <p class="producto-precio">$285.00</p>
+        </div>
+      </div>
+
+
+      <div class="producto-card">
+        <div class="etiqueta-nuevo">NUEVO</div>
+        <img src="assets/images/samsung2.jpg" alt="Samsung Torre de Sonido" class="producto-imagen" />
+        <div class="producto-info">
+          <p class="producto-titulo">SAMSUNG | TORRE DE SONIDO | 1500 WATTS</p>
+          <p class="producto-codigo">Código: MX-T70</p>
+          <span class="disponible">Disponible</span>
+          <p class="producto-precio">$395.00</p>
+        </div>
+      </div>
+
+
+      <div class="producto-card">
+        <div class="etiqueta-nuevo">NUEVO</div>
+        <img src="assets/images/samsung.jpg" alt="Motorola TV LED" class="producto-imagen" />
+        <div class="producto-info">
+          <p class="producto-titulo">MOTOROLA | TV LED | GOOGLE TV</p>
+          <p class="producto-codigo">Código: 50TMKUHD</p>
+          <span class="disponible">Disponible</span>
+          <p class="producto-precio">$410.00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<!-- Comentarios -->
+<div class="comentarios">
+  <p-carousel [value]="comments" [numVisible]="1" [numScroll]="1" circular="true"
+    [style]="{ 'max-width': '800px', 'margin': '0 auto' }">
+    <ng-template pTemplate="item" let-comment>
+      <div class="testimonial">
+        <div class="testimonial-content">
+          <p>{{ comment.text }}</p>
+        </div>
+        <div class="testimonial-author">
+          <img [src]="comment.authorImage" alt="author" class="author-image" />
+          <div class="author-name">{{ comment.author }}</div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <p>&copy; 2024 FRIGOSERVICIOS - Todos los derechos reservados</p>
+    <p><strong>Dirección:</strong> Quito, Ecuador</p>
+    <p><strong>Teléfono:</strong> +593 99 123 4567</p>
+  </div>
+</footer>

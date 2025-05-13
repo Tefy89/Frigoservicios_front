@@ -1,0 +1,51 @@
+<div class="form-container">
+    <h2>{{ editando ? 'Editar Material' : 'Agregar Material' }}</h2>
+    <form [formGroup]="materialForm" (ngSubmit)="onSubmit()">
+        <label for="nombre_material">Nombre del Material</label>
+        <input type="text" id="nombre_material" formControlName="nombre_material" />
+        <div class="error"
+            *ngIf="materialForm.get('nombre_material')?.invalid && materialForm.get('nombre_material')?.touched">
+            El nombre es obligatorio.
+        </div>
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" formControlName="descripcion"></textarea>
+        <div class="error" *ngIf="materialForm.get('descripcion')?.invalid && materialForm.get('descripcion')?.touched">
+            La descripción es obligatoria.
+        </div>
+
+        <label>
+            <input type="checkbox" formControlName="disponible" />
+            Disponible
+        </label>
+
+        <button type="submit" [disabled]="materialForm.invalid">{{ editando ? 'Actualizar' : 'Guardar' }}</button>
+    </form>
+</div>
+
+<hr />
+
+<div class="tabla-container">
+    <h3>Materiales Registrados</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Disponible</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let material of materiales">
+                <td>{{ material.nombre_material }}</td>
+                <td>{{ material.descripcion }}</td>
+                <td>{{ material.disponible ? 'Sí' : 'No' }}</td>
+                <td>
+                    <button (click)="editarMaterial(material)">Editar</button>
+                    <button (click)="eliminarMaterial(material.material_id)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
